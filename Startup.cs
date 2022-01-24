@@ -74,7 +74,7 @@ namespace Kiwi_review
                     Title = "Kiwi Web API",  
                     Description = "Authentication and Authorization in ASP.NET 6 with JWT and Swagger"  
                 });
-                swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()  
+                swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme  
                 {  
                     Name = "Authorization",  
                     Type = SecuritySchemeType.ApiKey,  
