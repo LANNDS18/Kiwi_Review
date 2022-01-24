@@ -5,13 +5,19 @@ User can create many movies, each movie contains some topics, user can write rev
 
 ## Dependency
 .Net6.0.1 SDK, Entityframework6.0 (Bad compatibility with arm64 architecture if using arm64 .Net6 SDK)
+
+
 Install all dependencies with NuGet.
 
 ## RUN
 
-`dotnet build` to build the project first
+Build in project file
 
-`dotnet run` to simply run the project
+`dotnet build` 
+
+Simply run the project
+
+`dotnet run`
 
 A visual api interface in https://localhost:****/swagger/index.html
 
@@ -29,8 +35,14 @@ Update databse
 
 Add Changes
 
-`dotnet ef migrations add < >`
+`dotnet ef migrations add <NAME>`
 
 ### Note
 
 Using `dotnet ef` to generate data model is not stable in arm64 Architecture, .Net5 is better recommded to use in this project.
+
+## Deployment
+
+`dotnet publish -h|--help`
+
+Publish .dll to deploy in different platform.
