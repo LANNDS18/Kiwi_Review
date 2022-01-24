@@ -1,12 +1,29 @@
 # Kiwi_review
 A movie review api enable user can review each movie in different topics and highlight the review with customized setting.
 
-User can create many movies, each movie contains some topics, user can write review under each topic, highlight the review that user want to concentrate on.
+User can import multiple movies, each movie contains some topics, user can write review under each topic, highlight the review that user want to concentrate on.
 
 ## Dependency
-.Net6.0.1 SDK, Entityframework6.0 (Bad compatibility with arm64 architecture if using arm64 .Net6 SDK)
 
+.NET SDK 6.0.101 
 
+Microsoft.AspNetCore.Authentication.JwtBearer
+
+Microsoft.EntityFrameworkCore 6.0.1
+
+Microsoft.IdentityModel.Tokens6.15.1
+
+MySql.Data 8.0.28
+
+MySql.EntityFrameworkCore 6.0.0
+
+Newtonsoft.Json 13.0.1
+
+Swashbuckle.AspNetCore 6.2.3
+
+System.IdentityModel.Tokens.Jwt 6.15.1
+
+Download .NET SDK in https://dotnet.microsoft.com/en-us/
 Install all dependencies with NuGet.
 
 ## RUN
@@ -21,7 +38,7 @@ Simply run the project
 
 A visual api interface in https://localhost:****/swagger/index.html
 
-## Databse
+## Database
 
 MySQL 8.0.26
 
