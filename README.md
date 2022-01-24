@@ -20,12 +20,15 @@ A visual api interface in https://localhost:****/swagger/index.html
 MySQL 8.0.26
 
 Create First migration
+
 `dotnet ef migrations add InitialCreate`
 
 Update databse
+
 `dotnet ef database update`
 
 Add Changes
+
 `dotnet ef migrations add < >`
 
 ### Note
