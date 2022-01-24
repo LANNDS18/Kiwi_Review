@@ -13,7 +13,7 @@ Install all dependencies with NuGet.
 
 `dotnet run` to simply run the project
 
-A visual api interface in [https://localhost:7219/swagger/index.html]{https://localhost:7219/swagger/index.html}
+A visual api interface in [https://localhost:7219/swagger/index.html]
 
 ## Databse
 
