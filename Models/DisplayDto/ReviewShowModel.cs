@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Kiwi_review.Models.DatabaseModel;
 
 namespace Kiwi_review.Models.DisplayDto

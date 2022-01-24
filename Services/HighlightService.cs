@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Kiwi_review.Interfaces.IServices;
+﻿using Kiwi_review.Interfaces.IServices;
 using Kiwi_review.Interfaces.IUnitOfWork;
 using Kiwi_review.Models.AddingDto;
 using Kiwi_review.Models.DatabaseModel;

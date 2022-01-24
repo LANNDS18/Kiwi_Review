@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Kiwi_review.Models.Jwt
+﻿namespace Kiwi_review.Models.Jwt
 {
     public class TnToken
     {

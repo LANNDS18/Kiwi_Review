@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Kiwi_review.Models.Jwt;
+﻿using Kiwi_review.Models.Jwt;
 
 namespace Kiwi_review.Interfaces.IServices
 {

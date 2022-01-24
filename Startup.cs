@@ -1,4 +1,5 @@
-﻿using Kiwi_review.Interfaces.IServices;
+﻿using System.Text;
+using Kiwi_review.Interfaces.IServices;
 using Kiwi_review.Interfaces.IUnitOfWork;
 using Kiwi_review.Models;
 using Kiwi_review.Models.Jwt;
@@ -51,7 +52,7 @@ namespace Kiwi_review
                         ValidateIssuerSigningKey = true,
                         ValidateLifetime = true,
                         IssuerSigningKey = new SymmetricSecurityKey(
-                            System.Text.Encoding.UTF8.GetBytes(jwtConfig[nameof(JwtConfig.IssuerSigningKey)]))
+                            Encoding.UTF8.GetBytes(jwtConfig[nameof(JwtConfig.IssuerSigningKey)]))
                     };
                 }
             );
