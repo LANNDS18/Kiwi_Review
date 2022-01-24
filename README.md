@@ -7,7 +7,7 @@ User can import multiple movies, each movie contains some topics, user can write
 
 .NET SDK 6.0.101 
 
-Microsoft.AspNetCore.Authentication.JwtBearer
+Microsoft.AspNetCore.Authentication.JwtBearer 6.0.1
 
 Microsoft.EntityFrameworkCore 6.0.1
 
