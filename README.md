@@ -13,11 +13,20 @@ Install all dependencies with NuGet.
 
 `dotnet run` to simply run the project
 
-A visual api interface in [https://localhost:7219/swagger/index.html]
+A visual api interface in https://localhost:****/swagger/index.html
 
 ## Databse
 
 MySQL 8.0.26
+
+Create First migration
+`dotnet ef migrations add InitialCreate`
+
+Update databse
+`dotnet ef database update`
+
+Add Changes
+`dotnet ef migrations add < >`
 
 ### Note
 
