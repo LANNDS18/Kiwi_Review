@@ -5,26 +5,19 @@ User can import multiple movies, each movie contains some topics, user can write
 
 ## Dependency
 
-.NET SDK 6.0.101 
+* .NET SDK 6.0.101 
+* Microsoft.AspNetCore.Authentication.JwtBearer 6.0.1
+* Microsoft.EntityFrameworkCore 6.0.1
+* Microsoft.IdentityModel.Tokens6.15.1
+* MySql.Data 8.0.28
+* MySql.EntityFrameworkCore 6.0.0
+* Newtonsoft.Json 13.0.1
+* Swashbuckle.AspNetCore 6.2.3
+* System.IdentityModel.Tokens.Jwt 6.15.1
 
-Microsoft.AspNetCore.Authentication.JwtBearer 6.0.1
+Download .NET SDK in https://dotnet.microsoft.com/en-us/ ，Install dependencies by NuGet.
 
-Microsoft.EntityFrameworkCore 6.0.1
-
-Microsoft.IdentityModel.Tokens6.15.1
-
-MySql.Data 8.0.28
-
-MySql.EntityFrameworkCore 6.0.0
-
-Newtonsoft.Json 13.0.1
-
-Swashbuckle.AspNetCore 6.2.3
-
-System.IdentityModel.Tokens.Jwt 6.15.1
-
-Download .NET SDK in https://dotnet.microsoft.com/en-us/
-Install all dependencies with NuGet.
+.NET 5 is also supported, but need to add some additional importers
 
 ## RUN
 
