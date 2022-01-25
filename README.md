@@ -19,7 +19,7 @@ Download .NET SDK in https://dotnet.microsoft.com/en-us/, install dependencies b
 
 .NET 5 is also supported, but need to add some additional importers
 
-## RUN
+## Run
 
 Build in project file
 
