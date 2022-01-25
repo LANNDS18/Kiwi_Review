@@ -8,7 +8,7 @@ User can import multiple movies, each movie contains some topics, user can write
 * .NET SDK 6.0.101 
 * Microsoft.AspNetCore.Authentication.JwtBearer 6.0.1
 * Microsoft.EntityFrameworkCore 6.0.1
-* Microsoft.IdentityModel.Tokens6.15.1
+* Microsoft.IdentityModel.Tokens 6.15.1
 * MySql.Data 8.0.28
 * MySql.EntityFrameworkCore 6.0.0
 * Newtonsoft.Json 13.0.1
@@ -35,21 +35,21 @@ A visual api interface in https://localhost:****/swagger/index.html
 
 MySQL 8.0.26
 
-Create First migration
+Create first migration
 
 `dotnet ef migrations add InitialCreate`
 
-Update databse
+Update database
 
 `dotnet ef database update`
 
-Add Changes
+Add changes
 
 `dotnet ef migrations add <NAME>`
 
 ### Note
 
-Using `dotnet ef` to generate data model is not stable in arm64 Architecture, .Net5 is better recommded to use in this project.
+Using `dotnet ef` to generate data model is not stable in Arm64 architecture, .Net5 is better recommended to use in this project.
 
 ## Deployment
 

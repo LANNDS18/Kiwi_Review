@@ -3,7 +3,7 @@ using Kiwi_review.Interfaces.IUnitOfWork;
 using Kiwi_review.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kiwi_review.Repository
+namespace Kiwi_review.UnitOfWork
 {
     public abstract class UnitOfWorkBase<T> : IUnitOfWorkBase<T> where T : class
     {

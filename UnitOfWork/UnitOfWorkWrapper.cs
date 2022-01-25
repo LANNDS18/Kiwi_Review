@@ -1,7 +1,7 @@
 ﻿using Kiwi_review.Interfaces.IUnitOfWork;
 using Kiwi_review.Models;
 
-namespace Kiwi_review.Repository
+namespace Kiwi_review.UnitOfWork
 {
     public class UnitOfWorkWrapper : IUnitOfWorkWrapper
     {

@@ -2,7 +2,7 @@
 using Kiwi_review.Models;
 using Kiwi_review.Models.DatabaseModel;
 
-namespace Kiwi_review.Repository
+namespace Kiwi_review.UnitOfWork
 {
     public class HighlightsUnitOfWork : UnitOfWorkBase<Highlight>, IHighlightsUnitOfWork
     {
