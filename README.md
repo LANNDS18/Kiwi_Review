@@ -15,7 +15,7 @@ User can import multiple movies, each movie contains some topics, user can write
 * Swashbuckle.AspNetCore 6.2.3
 * System.IdentityModel.Tokens.Jwt 6.15.1
 
-Download .NET SDK in https://dotnet.microsoft.com/en-us/ ，Install dependencies by NuGet.
+Download .NET SDK in https://dotnet.microsoft.com/en-us/, install dependencies by NuGet.
 
 .NET 5 is also supported, but need to add some additional importers
 
