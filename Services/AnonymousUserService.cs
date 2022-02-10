@@ -20,7 +20,7 @@ namespace Kiwi_review.Services
             _check = checkService;
         }
 
-        public AnonymousUserShowModel Generate()
+        public AnonymousUserShowModel? Generate()
         {
             var newUser = new User
             {
@@ -40,11 +40,12 @@ namespace Kiwi_review.Services
             _unitOfWork.Users.Update(newUser);
             _unitOfWork.Save();
             var user = Get(newUser.UserId);
+            if (user == null) return null;
             user.JwtToken = TokenCreate(user);
             return user;
         }
 
-        public AnonymousUserShowModel Get(int userId)
+        public AnonymousUserShowModel? Get(int userId)
         {
             var thisUser = _unitOfWork.Users.FindByCondition(
                 u => u.UserId == userId &&
@@ -82,7 +83,7 @@ namespace Kiwi_review.Services
                 if (userId == null || !_check.CheckUser((int) userId)) return null;
                 var user = Get((int) userId);
                 var reset = TokenCreate(user);
-                return reset.TokenStr;
+                return reset?.TokenStr;
             }
             catch (Exception)
             {
@@ -90,7 +91,7 @@ namespace Kiwi_review.Services
             }
         }
 
-        public AnonymousUserShowModel AutoGenerate(string? token)
+        public AnonymousUserShowModel? AutoGenerate(string? token)
         {
             var newToken = RefreshToken(token);
             if(newToken==null) return Generate();
@@ -115,13 +116,13 @@ namespace Kiwi_review.Services
             }
         }
 
-        private TnToken TokenCreate(AnonymousUserShowModel userDisplayDto)
+        private TnToken? TokenCreate(AnonymousUserShowModel? userDisplayDto)
         {
             var keyValuePairs = new Dictionary<string, string?>
             {
-                {"userId", userDisplayDto.UserId.ToString()},
-                {"isAnonymousUser", userDisplayDto.IsAnonymousUser.ToString()},
-                {"Email", $"{userDisplayDto.UserId}@tempUser"},
+                {"userId", userDisplayDto?.UserId.ToString()},
+                {"isAnonymousUser", userDisplayDto?.IsAnonymousUser.ToString()},
+                {"Email", $"{userDisplayDto?.UserId}@tempUser"},
             };
             var token = _token.CreateToken(keyValuePairs);
             return token;

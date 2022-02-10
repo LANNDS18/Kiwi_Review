@@ -41,9 +41,9 @@ namespace Kiwi_review.Services
 
         public int? GetUidFromToken(string? token)
         {
-            var jwtArr = token.Split('.');
-            var payLoad = JsonConvert.DeserializeObject<Dictionary<string, string>>(Base64UrlEncoder.Decode(jwtArr[1]));
-            var uidString = payLoad["userId"];
+            var jwtArr = token?.Split('.');
+            var payLoad = JsonConvert.DeserializeObject<Dictionary<string, string>>(Base64UrlEncoder.Decode(jwtArr?[1]));
+            var uidString = payLoad?["userId"];
             if (uidString == null) return null;
             return int.Parse(uidString);
         }

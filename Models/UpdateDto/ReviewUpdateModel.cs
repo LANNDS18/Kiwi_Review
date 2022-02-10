@@ -7,6 +7,6 @@ namespace Kiwi_review.Models.UpdateDto
         [Required] public int ReviewId { get; set; }
         [MinLength(1)]
         [MaxLength(2000)]
-        public string ReviewContent { get; set; }
+        public string? ReviewContent { get; set; }
     }
 }

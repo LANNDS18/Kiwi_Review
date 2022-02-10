@@ -19,14 +19,14 @@ namespace Kiwi_review.Services
             _options = options;
         }
 
-        public TnToken CreateToken(Dictionary<string, string?> keyValuePairs)
+        public TnToken? CreateToken(Dictionary<string, string?> keyValuePairs)
         {
             var claims = keyValuePairs.Select(
                 item => new Claim(item.Key, item.Value)).ToList();
             return CreateTokenString(claims);
         }
 
-        private TnToken CreateTokenString(IEnumerable<Claim> claims)
+        private TnToken? CreateTokenString(IEnumerable<Claim> claims)
         {
             var now = DateTime.Now;
             var expires = now.Add(TimeSpan.FromMinutes(_options.Value.AccessTokenExpiresMinutes));
@@ -42,18 +42,22 @@ namespace Kiwi_review.Services
             return new TnToken {TokenStr = new JwtSecurityTokenHandler().WriteToken(token), Expires = expires};
         }
 
-        public TnToken GetEntireToken(string? tkStr)
+        public TnToken? GetEntireToken(string? tkStr)
         {
             try
             {
-                var jwtArr = tkStr.Split('.');
-                if (jwtArr.Length < 3)
+                var jwtArr = tkStr?.Split('.');
+                if (jwtArr is null or { Length: < 3})
                 {
                     return null;
                 }
 
                 var payLoad =
                     JsonConvert.DeserializeObject<Dictionary<string, string>>(Base64UrlEncoder.Decode(jwtArr[1]));
+                if (payLoad is null)
+                {
+                    return null;
+                }
                 var exp = double.Parse(payLoad["exp"]);
                 var startTime = new DateTime(1970, 1, 1);
                 var dateTime = startTime.AddSeconds(exp);
@@ -80,14 +84,14 @@ namespace Kiwi_review.Services
         {
             try
             {
-                var jwtArr = encodeJwt.Split('.');
-                if (jwtArr.Length < 3)
+                var jwtArr = encodeJwt?.Split('.');
+                if (jwtArr is null or { Length: < 3})
                 {
                     return TokenType.Fail;
                 }
-
                 var payLoad =
                     JsonConvert.DeserializeObject<Dictionary<string, string>>(Base64UrlEncoder.Decode(jwtArr[1]));
+                if (payLoad is null) return TokenType.Fail;
                 var hs256 = new HMACSHA256(Encoding.ASCII.GetBytes(_options.Value.IssuerSigningKey));
                 var success = string.Equals(jwtArr[2],
                     Base64UrlEncoder.Encode(

@@ -17,7 +17,7 @@ namespace Kiwi_review.Services
             _check = checkService;
         }
 
-        public List<HighlightShowModel> GetAll(int reviewId, string? token)
+        public List<HighlightShowModel?> GetAll(int reviewId, string? token)
         {
             var userId = _check.GetUidFromToken(token);
             if (userId == null || !_check.CheckUser((int) userId)) return null!;
@@ -94,12 +94,12 @@ namespace Kiwi_review.Services
             return !highlights.Any();
         }
 
-        public HighlightShowModel ShowHighlight(Highlight highlight)
+        public HighlightShowModel? ShowHighlight(Highlight? highlight)
         {
             return TransferHighlightShowModel(highlight);
         }
 
-        private static HighlightShowModel TransferHighlightShowModel(Highlight highlight)
+        private static HighlightShowModel? TransferHighlightShowModel(Highlight? highlight)
         {
             if (highlight == null) return null;
             var highlightDisplay = new HighlightShowModel

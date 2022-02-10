@@ -103,7 +103,8 @@ namespace Kiwi_review.Services
             {
                 foreach (var topic in topicList)
                 {
-                    _topic.Delete(topic.TopicId, token);
+                    if (token != null)
+                        _topic.Delete(topic.TopicId, token);
                 }
             }
             _unitOfWork.Movies.Update(movie);
@@ -135,9 +136,12 @@ namespace Kiwi_review.Services
             if (movie != null)
             {
                 var topicShowModels = _topic.GetAll(movie.MovieId, token);
-                var movieNumberTopic =  topicShowModels.Count;
-                if (movie.NumberTopic == movieNumberTopic) return movie;
-                movie.NumberTopic = movieNumberTopic;
+                if (topicShowModels != null)
+                {
+                    var movieNumberTopic =  topicShowModels.Count;
+                    if (movie.NumberTopic == movieNumberTopic) return movie;
+                    movie.NumberTopic = movieNumberTopic;
+                }
             }
 
             if (movie == null) return movie;

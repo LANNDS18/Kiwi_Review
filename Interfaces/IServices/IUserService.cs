@@ -8,7 +8,7 @@ namespace Kiwi_review.Interfaces.IServices
     {
         UserShowModel? Register(UserAddingModel userRegister);
         UserShowModel? Login(UserLoginDto user);
-        UserShowModel Get(string? token);
+        UserShowModel? Get(string? token);
         UserShowModel? GetById(int userid);
     }
 }

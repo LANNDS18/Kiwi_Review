@@ -7,6 +7,6 @@ namespace Kiwi_review.Models.DisplayDto
     {
         public int UserId { get; set; }
         public bool IsAnonymousUser { get; set; }
-        public TnToken JwtToken { get; set; }
+        public TnToken? JwtToken { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace Kiwi_review.Services
             _review = reviewService;
         }
 
-        public List<TopicShowModel?>? GetAll(int movieId, string? token)
+        public List<TopicShowModel>? GetAll(int movieId, string? token)
         {
             var userId = _check.GetUidFromToken(token);
             if (userId == null || !_check.CheckUser((int) userId) || !_check.CheckMovie(movieId)) return null;

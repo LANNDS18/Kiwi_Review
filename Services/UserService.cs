@@ -47,6 +47,7 @@ namespace Kiwi_review.Services
             if (displayUser == null) return null;
             var displayDto = GetById(displayUser.UserId);
             var token = TokenCreate(displayDto);
+            if (displayDto == null) return null;
             displayDto.JwtToken = token;
             return displayDto;
         }
@@ -68,7 +69,7 @@ namespace Kiwi_review.Services
             return displayDto;
         }
 
-        public UserShowModel Get(string? token)
+        public UserShowModel? Get(string? token)
         {
             var userid = _check.GetUidFromToken(token);
             var thisUser = _unitOfWork.Users.FindByCondition(
@@ -108,7 +109,7 @@ namespace Kiwi_review.Services
             return displayDto;
         }
 
-        private TnToken TokenCreate(UserShowModel? userShowModel)
+        private TnToken? TokenCreate(UserShowModel? userShowModel)
         {
             var keyValuePairs = new Dictionary<string, string?>
             {

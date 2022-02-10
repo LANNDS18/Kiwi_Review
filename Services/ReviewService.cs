@@ -21,7 +21,7 @@ namespace Kiwi_review.Services
             _highlight = highlightService;
         }
 
-        public List<ReviewShowModel> GetFromMovie(int movieId, string? token)
+        public List<ReviewShowModel>? GetFromMovie(int movieId, string? token)
         {
             var userId = _check.GetUidFromToken(token);
             if (userId == null || !_check.CheckMovie(movieId) || !_check.CheckUser((int) userId)) return null;
@@ -40,7 +40,7 @@ namespace Kiwi_review.Services
             return reviewShowModels;
         }
 
-        public List<ReviewShowModel>? GetFromTopic(int topicId, string token)
+        public List<ReviewShowModel>? GetFromTopic(int topicId, string? token)
         {
             var topic = _unitOfWork.Topics.FindByCondition(c => c.TopicId == topicId).SingleOrDefault();
             if (topic == null) return null!;
@@ -100,12 +100,9 @@ namespace Kiwi_review.Services
             var movie = _unitOfWork.Movies.FindByCondition(movie1 => movie1.MovieId == review.MovieId).SingleOrDefault();
             if (movie != null && movie.UserId != userId && review.UserId != userId) return false;
             var highlightList = _highlight.GetAll(reviewId, token);
-            if (highlightList != null)
+            foreach (var t in highlightList)
             {
-                foreach (var t in highlightList)
-                {
-                    _highlight.Delete(t.HighlightId);
-                }
+                _highlight.Delete(t.HighlightId);
             }
             review.IsDelete = true;
             review.UpdatedAt = DateTime.Now;
@@ -179,8 +176,7 @@ namespace Kiwi_review.Services
             if (movie is {OnlyHighlightOnce: true} && !_highlight.CheckOnlyOneHighlightPerReview(review.ReviewId, userId))
                 reviewDisplay.Highlightable = false;
 
-            var highlights = _unitOfWork.Highlights.FindByCondition(l =>
-                l.ReviewId == review.ReviewId).ToList();
+            var highlights = _unitOfWork.Highlights.FindByCondition(l => l.ReviewId == review.ReviewId).ToList();
             if (!highlights.Any()) return reviewDisplay;
             var alreadyHighlighted = highlights.Where(
                     highlight => highlight.UserId == userId && highlight.IsDelete == false).Select(highlight => _highlight.ShowHighlight(highlight))
