@@ -12,13 +12,13 @@ namespace Kiwi_review.Services
     public class UserService : IUserService
     {
         private readonly IUnitOfWorkWrapper _unitOfWork;
-        private readonly ITokenService _token;
+        private readonly IJwtService _jwt;
         private readonly ICheckService _check;
 
-        public UserService(IUnitOfWorkWrapper unitOfWorkWrapper, ITokenService token, ICheckService check)
+        public UserService(IUnitOfWorkWrapper unitOfWorkWrapper, IJwtService jwt, ICheckService check)
         {
             _unitOfWork = unitOfWorkWrapper;
-            _token = token;
+            _jwt = jwt;
             _check = check;
         }
 
@@ -117,7 +117,7 @@ namespace Kiwi_review.Services
                 {"isAnonymousUser", userShowModel?.IsAnonymousUser.ToString()},
                 {"Email", userShowModel?.Email}
             };
-            var token = _token.CreateToken(keyValuePairs);
+            var token = _jwt.CreateToken(keyValuePairs);
             return token;
         }
     }

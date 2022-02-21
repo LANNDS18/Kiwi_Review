@@ -56,7 +56,7 @@ namespace Kiwi_review
                     };
                 }
             );
-            services.AddTransient<ITokenService, TokenService>();
+            services.AddTransient<IJwtService, JwtService>();
             services.AddTransient<ICheckService, CheckService>();
             services.AddTransient<IHighlightService, HighlightService>();
             services.AddTransient<IReviewService, ReviewService>();
@@ -82,7 +82,7 @@ namespace Kiwi_review
                     Scheme = "Bearer",  
                     BearerFormat = "JWT",  
                     In = ParameterLocation.Header,  
-                    Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6\"",  
+                    Description = "Enter 'Bearer' [space] and then your valid jwt in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6\"",  
                 });  
                 swagger.AddSecurityRequirement(new OpenApiSecurityRequirement  
                 {  

@@ -9,11 +9,11 @@ namespace Kiwi_review.Controllers
     public class AnonymousUsersController : Controller
     {
         private readonly IAnonymousUserService _anonymous;
-        private readonly ITokenService _token;
-        public AnonymousUsersController(IAnonymousUserService anonymousUserService, ITokenService tokenService)
+        private readonly IJwtService _jwt;
+        public AnonymousUsersController(IAnonymousUserService anonymousUserService, IJwtService jwtService)
         {
             _anonymous = anonymousUserService;
-            _token = tokenService;
+            _jwt = jwtService;
 
         }
 
@@ -40,7 +40,7 @@ namespace Kiwi_review.Controllers
             if (token == null) return NotFound();
             var resetToken = _anonymous.RefreshToken(token);
             if (resetToken == null) return BadRequest();
-            return Ok(_token.GetEntireToken(token));
+            return Ok(_jwt.GetEntireToken(token));
         }
 
         [HttpGet("checkTokenStatus")]

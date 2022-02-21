@@ -9,14 +9,14 @@ namespace Kiwi_review.Services
     public class AnonymousUserService : IAnonymousUserService
     {
         private readonly IUnitOfWorkWrapper _unitOfWork;
-        private readonly ITokenService _token;
+        private readonly IJwtService _jwt;
         private readonly ICheckService _check;
 
-        public AnonymousUserService(IUnitOfWorkWrapper unitOfWorkWrapper, ITokenService token,
+        public AnonymousUserService(IUnitOfWorkWrapper unitOfWorkWrapper, IJwtService jwt,
             ICheckService checkService)
         {
             _unitOfWork = unitOfWorkWrapper;
-            _token = token;
+            _jwt = jwt;
             _check = checkService;
         }
 
@@ -66,7 +66,7 @@ namespace Kiwi_review.Services
         {
             try
             {
-                var tokenType = _token.ValidateTokenState(token);
+                var tokenType = _jwt.ValidateTokenState(token);
                 switch (tokenType)
                 {
                     case TokenType.Ok:
@@ -99,7 +99,7 @@ namespace Kiwi_review.Services
             if (userid == null) return Generate();
             var user = Get((int)userid);
             if (user == null) return null;
-            user.JwtToken = _token.GetEntireToken(newToken);
+            user.JwtToken = _jwt.GetEntireToken(newToken);
             return user;
         }
 
@@ -107,7 +107,7 @@ namespace Kiwi_review.Services
         {
             try
             {
-                var tokenType = _token.ValidateTokenState(token);
+                var tokenType = _jwt.ValidateTokenState(token);
                 return tokenType;
             }
             catch (Exception)
@@ -124,7 +124,7 @@ namespace Kiwi_review.Services
                 {"isAnonymousUser", userDisplayDto?.IsAnonymousUser.ToString()},
                 {"Email", $"{userDisplayDto?.UserId}@tempUser"},
             };
-            var token = _token.CreateToken(keyValuePairs);
+            var token = _jwt.CreateToken(keyValuePairs);
             return token;
         }
     }

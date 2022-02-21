@@ -10,11 +10,11 @@ using Newtonsoft.Json;
 
 namespace Kiwi_review.Services
 {
-    public class TokenService : ITokenService
+    public class JwtService : IJwtService
     {
         private readonly IOptions<JwtConfig> _options;
 
-        public TokenService(IOptions<JwtConfig> options)
+        public JwtService(IOptions<JwtConfig> options)
         {
             _options = options;
         }

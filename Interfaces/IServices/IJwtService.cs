@@ -2,7 +2,7 @@
 
 namespace Kiwi_review.Interfaces.IServices
 {
-    public interface ITokenService
+    public interface IJwtService
     {
         TnToken? CreateToken(Dictionary<string, string?> keyValuePairs);
         TokenType ValidateTokenState(string? encodeJwt);

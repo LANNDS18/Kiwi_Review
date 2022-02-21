@@ -37,7 +37,7 @@ namespace Kiwi_review.Controllers
         
 
         [HttpGet]
-        [Route("{token}")]
+        [Route("{jwt}")]
         public IActionResult Get(string? token)
         {
             var displayDto = _user.Get(token);
